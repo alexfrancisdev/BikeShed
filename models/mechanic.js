@@ -11,7 +11,11 @@ const mechanicSchema = mongoose.Schema({
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     time: { type: Date, default: Date.now }
   },
-  photo: String
+  photo: String,
+  location: {
+    lat: String,
+    lng: String
+  }
 });
 
 mechanicSchema.pre('save', function(){

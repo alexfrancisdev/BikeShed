@@ -8,7 +8,7 @@ const bookingSchema = mongoose.Schema({
     description: String,
     price: Number
   },
-  accepted: Boolean,
+  accepted: {type: Boolean, default: false},
   completed: {type: Boolean, default: false},
   collected: {type: Boolean, default: false}
 });
