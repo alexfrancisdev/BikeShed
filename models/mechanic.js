@@ -6,11 +6,11 @@ const mechanicSchema = mongoose.Schema({
   email: String,
   phoneNumber: String,
   password: String,
-  reviews: {
+  reviews: [{
     content: String,
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
     time: { type: Date, default: Date.now }
-  },
+  }],
   photo: String,
   location: {
     lat: String,
