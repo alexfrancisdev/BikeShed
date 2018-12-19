@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const mechanicSchema = mongoose.Schema({
-  username: { type: String, required: 'This field is required' },
-  email: { type: String, required: 'This field is required' },
-  password: { type: String, required: 'This field is required' },
+  username: String,
+  email: String,
+  phoneNumber: String,
+  password: String,
   reviews: {
     content: String,
     user: { type: mongoose.Schema.ObjectId, ref: 'User' },
