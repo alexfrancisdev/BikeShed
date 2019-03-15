@@ -1,19 +1,19 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpack = new HtmlWebpackPlugin({
   template: 'src/index.html',
   filename: 'index.html',
   inject: 'body'
-});
+})
 
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CopyWebpack = new CopyWebpackPlugin([
   { from: './src/assets', to: 'assets' }
-]);
+])
 
-const HotModuleReplcement = new webpack.HotModuleReplacementPlugin();
+const HotModuleReplcement = new webpack.HotModuleReplacementPlugin()
 
 module.exports = {
   entry: './src/app.js',
@@ -52,4 +52,4 @@ module.exports = {
     }
   },
   plugins: [HotModuleReplcement, HtmlWebpack, CopyWebpack]
-};
+}

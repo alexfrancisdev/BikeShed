@@ -1,4 +1,4 @@
-const Mechanic = require('../models/mechanic');
+const Mechanic = require('../models/mechanic')
 
 function indexRoute(req, res, next) {
   Mechanic
@@ -6,9 +6,9 @@ function indexRoute(req, res, next) {
     .populate()
     .exec()
     .then(users => res.json(users))
-    .catch(next);
+    .catch(next)
 }
 
 module.exports = {
   index: indexRoute
-};
+}

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const bookingSchema = mongoose.Schema({
   service: { type: mongoose.Schema.ObjectId, ref: 'Service' },
@@ -11,6 +11,6 @@ const bookingSchema = mongoose.Schema({
   accepted: {type: Boolean, default: false},
   completed: {type: Boolean, default: false},
   collected: {type: Boolean, default: false}
-});
+})
 
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = mongoose.model('Booking', bookingSchema)

@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/user')
 
 function indexRoute(req, res, next) {
   User
@@ -6,9 +6,9 @@ function indexRoute(req, res, next) {
     .populate()
     .exec()
     .then(users => res.json(users))
-    .catch(next);
+    .catch(next)
 }
 
 module.exports = {
   index: indexRoute
-};
+}
