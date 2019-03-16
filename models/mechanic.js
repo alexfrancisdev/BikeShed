@@ -8,14 +8,17 @@ const mechanicSchema = mongoose.Schema({
   password: String,
   reviews: [{
     content: String,
-    user: { type: mongoose.Schema.ObjectId, ref: 'User' },
-    time: { type: Date, default: Date.now }
+    user: { type: mongoose.Schema.ObjectId, ref: 'User' }
+  }, {
+    timestamps: true
   }],
   photo: String,
   location: {
     lat: String,
     lng: String
   }
+}, {
+  timestamps: true
 })
 
 mechanicSchema.pre('save', function(){
