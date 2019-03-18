@@ -29,6 +29,12 @@ mechanicSchema.methods.validatePassword = function(attemptedPassword){
   return bcrypt.compareSync(attemptedPassword, this.password)
 }
 
+mechanicSchema.virtual('services', {
+  ref: 'Service',
+  localField: '_id',
+  foreignField: 'mechanic'
+})
+
 mechanicSchema.set('toJSON', {
   virtuals: true
 })
