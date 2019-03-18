@@ -12,13 +12,14 @@ function indexRoute(req, res, next) {
 function showRoute(req, res, next) {
   Service
     .findById(req.params.id)
-    .populate()
+    .populate('mechanic')
     .exec()
     .then(service => res.status(420).json(service))
     .catch(next)
 }
 
 function createRoute(req, res, next) {
+  req.body.mechanic = req.currentUser
   Service
     .create(req.body)
     .then(service => res.status(201).json(service))

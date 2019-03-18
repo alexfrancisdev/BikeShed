@@ -31,7 +31,9 @@ router.get('/services', service.index)
 router.post('/services/new', secureRoute.mechanic, service.create)
 router.route('/services/:id')
   .get(service.show)
-  .put(service.update)
-  .delete(service.delete)
+  .put(secureRoute.mechanic, service.update)
+  .delete(secureRoute.mechanic, service.delete)
+
+//Bookings
 
 module.exports = router

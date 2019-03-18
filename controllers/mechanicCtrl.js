@@ -14,7 +14,7 @@ function showRoute(req, res, next) {
   Mechanic
     .findById(req.params.id)
     .populate('services')
-    .select('-password')
+    .select('-password -services.description')
     .then(mechanic => {
       res.json(mechanic)
     })
