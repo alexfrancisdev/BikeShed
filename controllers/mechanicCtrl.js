@@ -10,6 +10,18 @@ function indexRoute(req, res, next) {
     .catch(next)
 }
 
+function showRoute(req, res, next) {
+  Mechanic
+    .findById(req.params.id)
+    .populate('services')
+    .select('-password')
+    .then(mechanic => {
+      res.json(mechanic)
+    })
+    .catch(next)
+}
+
 module.exports = {
-  index: indexRoute
+  index: indexRoute,
+  show: showRoute
 }

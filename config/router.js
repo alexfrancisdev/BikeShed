@@ -20,13 +20,18 @@ router.route('/user')
 //Mechanic
 router.post('/mechanic/register', mechanicAuth.register)
 router.post('/mechanic/login', mechanicAuth.login)
+router.route('/mechanic/:id')
+  .get(mechanic.show)
 
 router.route('/mechanic')
   .get(mechanic.index)
 
 //Services
-router.get('/services/', service.index)
+router.get('/services', service.index)
 router.post('/services/new', secureRoute.mechanic, service.create)
-router.get('services/:id', service.show)
+router.route('/services/:id')
+  .get(service.show)
+  .put(service.update)
+  .delete(service.delete)
 
 module.exports = router

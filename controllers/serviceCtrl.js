@@ -5,51 +5,51 @@ function indexRoute(req, res, next) {
     .find()
     .populate('mechanic')
     .exec()
-    .then(Services => res.json(Services))
+    .then(services => res.json(services))
     .catch(next)
 }
 
 function showRoute(req, res, next) {
   Service
     .findById(req.params.id)
-    .populate('mechanic')
+    .populate()
     .exec()
-    .then(Service => res.json(Service))
+    .then(service => res.status(420).json(service))
     .catch(next)
 }
 
 function createRoute(req, res, next) {
   Service
     .create(req.body)
-    .then(Service => res.status(201).json(Service))
+    .then(service => res.status(201).json(service))
     .catch(next)
 }
 
-// function updateRoute(req, res, next) {
-//   Service
-//     .findById(req.params.id)
-//     .exec()
-//     .then(Service => {
-//       Object.assign(Service, req.body)
-//       return Service.save()
-//     })
-//     .then(Service => res.json(Service))
-//     .catch(next)
-// }
-//
-// function deleteRoute(req, res, next) {
-//   Service
-//     .findById(req.params.id)
-//     .exec()
-//     .then(Service => Service.remove())
-//     .then(() => res.sendStatus(204))
-//     .catch(next)
-// }
+function updateRoute(req, res, next) {
+  Service
+    .findById(req.params.id)
+    .exec()
+    .then(service => {
+      Object.assign(service, req.body)
+      return service.save()
+    })
+    .then(service => res.json(service))
+    .catch(next)
+}
+
+function deleteRoute(req, res, next) {
+  Service
+    .findById(req.params.id)
+    .exec()
+    .then(service => service.remove())
+    .then(() => res.sendStatus(204))
+    .catch(next)
+}
 
 module.exports ={
   index: indexRoute,
   show: showRoute,
-  create: createRoute
-  // update: updateRoute,
-  // delete: deleteRoute
+  create: createRoute,
+  update: updateRoute,
+  delete: deleteRoute
 }
