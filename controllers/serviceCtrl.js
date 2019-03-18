@@ -3,6 +3,7 @@ const Service = require('../models/service.js')
 function indexRoute(req, res, next) {
   Service
     .find()
+    .populate('mechanic')
     .exec()
     .then(Services => res.json(Services))
     .catch(next)
@@ -11,6 +12,7 @@ function indexRoute(req, res, next) {
 function showRoute(req, res, next) {
   Service
     .findById(req.params.id)
+    .populate('mechanic')
     .exec()
     .then(Service => res.json(Service))
     .catch(next)
