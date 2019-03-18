@@ -6,6 +6,8 @@ const userAuth = require('../controllers/userAuthCtrl')
 const mechanic = require('../controllers/mechanicCtrl')
 const mechanicAuth = require('../controllers/mechanicAuthCtrl')
 
+const secureRoute = require('../lib/secureRoute')
+
 const service = require('../controllers/serviceCtrl')
 
 //User
@@ -24,7 +26,7 @@ router.route('/mechanic')
 
 //Services
 router.get('/services/', service.index)
-router.post('/services/create', service.create)
+router.post('/services/new', secureRoute.mechanic, service.create)
 router.get('services/:id', service.show)
 
 module.exports = router

@@ -7,4 +7,8 @@ const serviceSchema = mongoose.Schema({
   mechanic: { type: mongoose.Schema.ObjectId, ref: 'Mechanic' }
 })
 
+serviceSchema.set('toJSON', {
+  virtuals: true
+})
+
 module.exports = mongoose.model('Service', serviceSchema)
