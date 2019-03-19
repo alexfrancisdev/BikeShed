@@ -69,6 +69,17 @@ function rejectBooking(req, res, next){
     .catch(next)
 }
 
+function dropoffBooking(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .then(booking =>{
+      booking.withMechanic = true
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
 function completedBooking(req, res, next){
   Booking
     .findById(req.params.id)
@@ -79,11 +90,52 @@ function completedBooking(req, res, next){
     .then(booking => res.json(booking))
     .catch(next)
 }
-function collectedBooking(req, res, next){
+function collectBooking(req, res, next){
   Booking
     .findById(req.params.id)
     .then(booking =>{
       booking.collected = true
+      booking.withMechanic = false
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
+function addExtras(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .populate()
+    .exec()
+    .then(booking => {
+      booking.extraFees.push(req.body)
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
+function updateExtras(req, res, next){
+  console.log('id: ', req.params )
+  Booking
+    .findById(req.params.id)
+    .populate()
+    .then(booking => {
+      const extra = booking.extraFees.id(req.params.extraId)
+      Object.assign(extra, req.body)
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
+function deleteExtra(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .populate()
+    .then(booking => {
+      const extra = booking.extraFees.id(req.params.extraId)
+      extra.remove()
       return booking.save()
     })
     .then(booking => res.json(booking))
@@ -98,6 +150,10 @@ module.exports = {
   delete: deleteRoute,
   accept: acceptBooking,
   reject: rejectBooking,
+  dropoff: dropoffBooking,
   completed: completedBooking,
-  collected: collectedBooking
+  collected: collectBooking,
+  addExtra: addExtras,
+  updateExtra: updateExtras,
+  deleteExtra: deleteExtra
 }

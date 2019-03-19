@@ -42,7 +42,12 @@ router.route('/bookings/:id')
   .delete(secureRoute.mechanic, booking.delete)
 router.post('/bookings/:id/accept', booking.accept)
 router.post('/bookings/:id/reject', booking.reject)
+router.post('/bookings/:id/dropoff', booking.dropoff)
 router.post('/bookings/:id/completed', booking.completed)
 router.post('/bookings/:id/collected', booking.collected)
+router.post('/bookings/:id/extras', booking.addExtra)
+router.route('/bookings/:id/extras/:extraId')
+  .put(booking.updateExtra)
+  .delete(booking.deleteExtra)
 
 module.exports = router

@@ -10,6 +10,7 @@ const bookingSchema = mongoose.Schema({
   }],
   accepted: {type: Boolean, default: false},
   rejected: {type: Boolean, default: false},
+  withMechanic: {type: Boolean, default: false},
   completed: {type: Boolean, default: false},
   collected: {type: Boolean, default: false}
 }, { timestamps: true})
