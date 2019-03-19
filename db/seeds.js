@@ -29,19 +29,19 @@ const serviceIds = [
   '5c096900dc8e460b1e53f08b'
 ]
 
-const bookingIds = [
-  '5c0968fbdc8e460b1e53f084',
-  '5c0968fbdc8e460b1e53f085',
-  '5c0968fbdc8e460b1e53f086',
-  '5c096901dc8e460b1e53f08c',
-  '5c096901dc8e460b1e53f07d',
-  '5be9860fcb16d525543ceda1',
-  '5be9860fcb16d525543ceda2',
-  '5be9860fcb16d525543ceda3',
-  '5be9860fcb16d525543ceda4',
-  '5be9860fcb16d525543ceda5',
-  '5be9860fcb16d525543ceda6'
-]
+// const bookingIds = [
+//   '5c0968fbdc8e460b1e53f084',
+//   '5c0968fbdc8e460b1e53f085',
+//   '5c0968fbdc8e460b1e53f086',
+//   '5c096901dc8e460b1e53f08c',
+//   '5c096901dc8e460b1e53f07d',
+//   '5be9860fcb16d525543ceda1',
+//   '5be9860fcb16d525543ceda2',
+//   '5be9860fcb16d525543ceda3',
+//   '5be9860fcb16d525543ceda4',
+//   '5be9860fcb16d525543ceda5',
+//   '5be9860fcb16d525543ceda6'
+// ]
 
 const userData = [
   {

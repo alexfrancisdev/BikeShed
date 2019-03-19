@@ -2,13 +2,11 @@ const router = require('express').Router()
 
 const user = require('../controllers/userCtrl')
 const userAuth = require('../controllers/userAuthCtrl')
-
 const mechanic = require('../controllers/mechanicCtrl')
 const mechanicAuth = require('../controllers/mechanicAuthCtrl')
-
 const secureRoute = require('../lib/secureRoute')
-
 const service = require('../controllers/serviceCtrl')
+const booking = require('../controllers/bookingCtrl')
 
 //User
 router.post('/user/register', userAuth.register)
@@ -35,5 +33,12 @@ router.route('/services/:id')
   .delete(secureRoute.mechanic, service.delete)
 
 //Bookings
+router.get('/bookings', booking.index)
+router.post('/bookings/new', secureRoute.user, booking.create)
+router.route('/booking/:id')
+  .get(booking.show)
+  .put(secureRoute.mechanic, booking.update)
+  .delete(secureRoute.mechanic, booking.delete)
+
 
 module.exports = router
