@@ -47,10 +47,34 @@ function deleteRoute(req, res, next){
     .catch(next)
 }
 
+function acceptBooking(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .then(booking =>{
+      booking.accepted = true
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
+function rejectBooking(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .then(booking =>{
+      booking.rejected = true
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
   show: showRoute,
   update: updateRoute,
-  delete: deleteRoute
+  delete: deleteRoute,
+  accept: acceptBooking,
+  reject: rejectBooking
 }

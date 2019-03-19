@@ -12,17 +12,18 @@ const booking = require('../controllers/bookingCtrl')
 router.post('/user/register', userAuth.register)
 router.post('/user/login', userAuth.login)
 
-router.route('/user')
-  .get(user.index)
+router.get('/user', user.index)
+router.route('/user/:id')
+  .get(user.show)
 
 //Mechanic
 router.post('/mechanic/register', mechanicAuth.register)
 router.post('/mechanic/login', mechanicAuth.login)
+
+router.get('/mechanic', mechanic.index)
 router.route('/mechanic/:id')
   .get(mechanic.show)
 
-router.route('/mechanic')
-  .get(mechanic.index)
 
 //Services
 router.get('/services', service.index)
@@ -35,10 +36,11 @@ router.route('/services/:id')
 //Bookings
 router.get('/bookings', booking.index)
 router.post('/bookings/new', secureRoute.user, booking.create)
-router.route('/booking/:id')
+router.route('/bookings/:id')
   .get(booking.show)
   .put(secureRoute.mechanic, booking.update)
   .delete(secureRoute.mechanic, booking.delete)
-
+router.post('/bookings/:id/accept', booking.accept)
+router.post('/bookings/:id/reject', booking.reject)
 
 module.exports = router
