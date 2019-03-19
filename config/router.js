@@ -42,5 +42,7 @@ router.route('/bookings/:id')
   .delete(secureRoute.mechanic, booking.delete)
 router.post('/bookings/:id/accept', booking.accept)
 router.post('/bookings/:id/reject', booking.reject)
+router.post('/bookings/:id/completed', booking.completed)
+router.post('/bookings/:id/collected', booking.collected)
 
 module.exports = router

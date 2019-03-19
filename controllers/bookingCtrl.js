@@ -69,6 +69,27 @@ function rejectBooking(req, res, next){
     .catch(next)
 }
 
+function completedBooking(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .then(booking =>{
+      booking.completed = true
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+function collectedBooking(req, res, next){
+  Booking
+    .findById(req.params.id)
+    .then(booking =>{
+      booking.collected = true
+      return booking.save()
+    })
+    .then(booking => res.json(booking))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   create: createRoute,
@@ -76,5 +97,7 @@ module.exports = {
   update: updateRoute,
   delete: deleteRoute,
   accept: acceptBooking,
-  reject: rejectBooking
+  reject: rejectBooking,
+  completed: completedBooking,
+  collected: collectedBooking
 }
