@@ -23,7 +23,7 @@ router.post('/mechanic/login', mechanicAuth.login)
 router.get('/mechanic', mechanic.index)
 router.route('/mechanic/:id')
   .get(mechanic.show)
-
+router.get('/mechanic/:id/bookings', mechanic.bookings)
 
 //Services
 router.get('/services', service.index)

@@ -15,4 +15,8 @@ const bookingSchema = mongoose.Schema({
   collected: {type: Boolean, default: false}
 }, { timestamps: true})
 
+bookingSchema.set('toJSON', {
+  virtuals: true
+})
+
 module.exports = mongoose.model('Booking', bookingSchema)

@@ -40,6 +40,8 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
