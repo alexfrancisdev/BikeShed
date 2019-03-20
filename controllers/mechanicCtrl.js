@@ -38,8 +38,59 @@ function allBookings(req, res, next){
     .catch(next)
 }
 
+function currentBookings(req, res, next){
+  const currentBookings = []
+  Booking
+    .find()
+    .populate('service')
+    .then(bookings => {
+      bookings.forEach(function(booking){
+        if (booking.service.mechanic.toString() === req.params.id && booking.rejected.toString() === 'false' && booking.collected.toString() === 'false'){
+          currentBookings.push(booking)
+        }
+      })
+      res.json(currentBookings)
+    })
+    .catch(next)
+}
+
+function pastBookings(req, res, next){
+  const currentBookings = []
+  Booking
+    .find()
+    .populate('service')
+    .then(bookings => {
+      bookings.forEach(function(booking){
+        if (booking.service.mechanic.toString() === req.params.id && booking.collected.toString() === 'true'){
+          currentBookings.push(booking)
+        }
+      })
+      res.json(currentBookings)
+    })
+    .catch(next)
+}
+
+function withMechanic(req, res, next){
+  const withMechanic = []
+  Booking
+    .find()
+    .populate('service')
+    .then(bookings => {
+      bookings.forEach(function(booking){
+        if (booking.service.mechanic.toString() === req.params.id && booking.withMechanic.toString() === 'true'){
+          withMechanic.push(booking)
+        }
+      })
+      res.json(withMechanic)
+    })
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
-  bookings: allBookings
+  bookings: allBookings,
+  currentBookings: currentBookings,
+  pastBookings: pastBookings,
+  withMechanic: withMechanic
 }

@@ -24,6 +24,9 @@ router.get('/mechanic', mechanic.index)
 router.route('/mechanic/:id')
   .get(mechanic.show)
 router.get('/mechanic/:id/bookings', mechanic.bookings)
+router.get('/mechanic/:id/bookings/current', mechanic.currentBookings)
+router.get('/mechanic/:id/bookings/past', mechanic.pastBookings)
+router.get('/mechanic/:id/bookings/with-mechanic', mechanic.withMechanic)
 
 //Services
 router.get('/services', service.index)
