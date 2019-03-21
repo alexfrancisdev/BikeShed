@@ -8,6 +8,7 @@ const mechanicSchema = mongoose.Schema({
   password: String,
   reviews: [{
     content: String,
+    score: { type: Number, min: 1, max: 5},
     user: { type: mongoose.Schema.ObjectId, ref: 'User' }
   }, {
     timestamps: true

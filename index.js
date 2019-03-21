@@ -15,6 +15,17 @@ app.use('/api', router)
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`))
 
-app.listen(port, () => console.log(`Express is listening on port ${port}`))
+const server = app.listen(port, () => console.log(`Express is listening on port ${port}`))
+
+const socket = require('socket.io')
+const io = socket(server)
+
+io.on('connection', (socket) => {
+  console.log(`socket is running, socket id: ${socket.id}`)
+
+  socket.on('sendMessage', function(data) {
+    io.emit('receiveMessage', data)
+  })
+})
 
 module.exports = app

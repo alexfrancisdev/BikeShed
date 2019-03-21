@@ -27,6 +27,7 @@ router.get('/mechanic/:id/bookings', mechanic.bookings)
 router.get('/mechanic/:id/bookings/current', mechanic.currentBookings)
 router.get('/mechanic/:id/bookings/past', mechanic.pastBookings)
 router.get('/mechanic/:id/bookings/with-mechanic', mechanic.withMechanic)
+router.post('/mechanic/:id/review', secureRoute.user, mechanic.addReview)
 
 //Services
 router.get('/services', service.index)

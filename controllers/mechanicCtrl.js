@@ -86,11 +86,26 @@ function withMechanic(req, res, next){
     .catch(next)
 }
 
+function addReview(req, res, next){
+  req.body.user = req.currentUser
+  Mechanic
+    .find()
+    .populate()
+    .then(mechanic => {
+      mechanic.reviews.push(req.body)
+      return mechanic.save()
+    })
+    .then(mechanic => res.json(mechanic))
+    .catch(next)
+}
+
 module.exports = {
   index: indexRoute,
   show: showRoute,
   bookings: allBookings,
   currentBookings: currentBookings,
   pastBookings: pastBookings,
-  withMechanic: withMechanic
+  withMechanic: withMechanic,
+  addReview: addReview
+
 }
