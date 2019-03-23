@@ -13,17 +13,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Button variant="outlined" color="primary">
-        <Bookmarks></Bookmarks>
-      </Button> <br />
-      <TextField
-        placeholder="Placeholder here"
-        label="Basic TextField" />
-      <MediaCard />
-      <MediaCard />
-      <MediaCard />
-      <MediaCard />
-      <MediaCard />
     </div>
   )
 }
