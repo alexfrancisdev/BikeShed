@@ -13,6 +13,7 @@ const mechanicSchema = mongoose.Schema({
   }, {
     timestamps: true
   }],
+  accountType: { type: String, default: 'mechanic'},
   photo: String,
   location: {
     lat: String,

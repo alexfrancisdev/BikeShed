@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
     user: { type: mongoose.Schema.ObjectId, ref: 'Mechanic' },
     time: { type: Date, default: Date.now }
   }],
-  photo: String
+  photo: String,
+  accountType: { type: String, default: 'user'}
 })
 
 userSchema.pre('save', function(){
