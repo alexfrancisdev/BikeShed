@@ -21,29 +21,35 @@ const styles = {
   }
 }
 
-function NavBar(props) {
-  const { classes } = props
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            Bikeshed
-          </Typography>
-          {!isAuthenticated()
-            ?
-            <div>
-              <Button color="inherit">Login</Button>
-              <Button color="inherit">Sign Up</Button>
-            </div>
-            :
-            <p>Signed in</p>
-          }
 
-        </Toolbar>
-      </AppBar>
-    </div>
-  )
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render(){
+    const { classes } = this.props
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" color="inherit" className={classes.grow}>
+              Bikeshed
+            </Typography>
+            {!isAuthenticated()
+              ?
+              <div>
+                <Button color="inherit">Login</Button>
+                <Button color="inherit">Sign Up</Button>
+              </div>
+              :
+              <Button color="inherit">{decodeToken().username}</Button>
+            }
+
+          </Toolbar>
+        </AppBar>
+      </div>
+    )
+  }
 }
 
 NavBar.propTypes = {
