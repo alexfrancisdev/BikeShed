@@ -10,6 +10,7 @@ import MediaCard from './components/common/card'
 import Navbar from './components/common/navbar'
 import Landing from './components/pages/landing'
 import Register from './components/pages/register'
+import Login from './components/pages/login'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <main>
           <Switch>
             <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
             <Route path="/" component={Landing} />
           </Switch>
         </main>

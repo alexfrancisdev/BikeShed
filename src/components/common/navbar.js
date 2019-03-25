@@ -6,6 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
+import { deleteToken, decodeToken, isAuthenticated } from '../../lib/common'
+
 const styles = {
   root: {
     flexGrow: 1
@@ -28,8 +30,16 @@ function NavBar(props) {
           <Typography variant="h6" color="inherit" className={classes.grow}>
             Bikeshed
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Sign Up</Button>
+          {!isAuthenticated()
+            ?
+            <div>
+              <Button color="inherit">Login</Button>
+              <Button color="inherit">Sign Up</Button>
+            </div>
+            :
+            <p>Signed in</p>
+          }
+
         </Toolbar>
       </AppBar>
     </div>
