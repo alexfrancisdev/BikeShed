@@ -27,7 +27,7 @@ export function tokenUserId() {
 }
 
 export function deleteToken() {
-  localStorage.removeItem('project4-token')
+  localStorage.removeItem('bikeshed-token')
 }
 
 export function isAuthenticated() {
