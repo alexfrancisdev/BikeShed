@@ -65,6 +65,7 @@
     "react-fontawesome": "^1.6.1",
     "react-leaflet": "^2.1.2",
     "react-map-gl": "^4.0.5",
+    "react-redux": "^7.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1",
     "react-search-field": "^1.0.0",
