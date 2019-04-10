@@ -14,7 +14,7 @@ function showRoute(req, res, next) {
     .findById(req.params.id)
     .populate('mechanic')
     .exec()
-    .then(service => res.status(420).json(service))
+    .then(service => res.status(200).json(service))
     .catch(next)
 }
 
